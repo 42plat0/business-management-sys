@@ -1,22 +1,23 @@
 {%extends "layout.html"%}
 
-{% block title %} <h1>Register</h1> {%endblock%}
+{% block title %} Register {%endblock%}
 
 {%block content %}
     <form method="POST" action={{ url_for('register') }}>
         <fieldset>
+            {{ form. hidden_tag()}}
             <legend>Register</legend>
+            
+            {{ form.username.label()}}
+            {{ form.username()}}
 
-            <label for="username">Username</label>
-            <input type="text" name="username">
+            {{ form.password.label()}}
+            {{ form.password()}}
 
-            <label for="password">Password</label>
-            <input type="password" name="password">
+            {{ form.confirm_password.label()}}
+            {{ form.confirm_password()}}
 
-            <label for="conf_password">Confirm Password</label>
-            <input type="password" name="conf_password">
-
-            <input type="submit" value="Submit">
+            {{ form.submit()}}
         </fieldset>
     </form>
 

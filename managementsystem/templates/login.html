@@ -5,15 +5,17 @@
 {%block content %}
     <form method="POST" action={{ url_for('login') }}>
         <fieldset>
+            {{ form. hidden_tag()}}
+            
             <legend>LOGIN</legend>
+            
+            {{ form.username.label()}}
+            {{ form.username()}}
 
-            <label for="username">Username</label>
-            <input type="text" name="username">
+            {{ form.password.label()}}
+            {{ form.password()}}
 
-            <label for="password">Password</label>
-            <input type="password" name="password">
-
-            <input type="submit" value="Submit">
+            {{ form.submit()}}
         </fieldset>
     </form>
 

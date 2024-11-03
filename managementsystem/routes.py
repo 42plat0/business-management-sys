@@ -1,5 +1,6 @@
 from flask import render_template, request
 from managementsystem import app
+from managementsystem.forms import RegisterForm, LoginForm
 
 @app.route("/")
 @app.route("/index")
@@ -13,25 +14,30 @@ def home():
 
 @app.route("/login", methods=("GET", "POST"))
 def login():
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+    form = LoginForm()
+
+    # POST req and VALID form
+    if form.validate_on_submit():
+        pass
 
     return render_template(
         "login.html",
-        title="Title",
-        content="Content"
+        title="Login",
+        form=form
     )
 
 @app.route("/register", methods=("GET", "POST"))
 def register():
-    if request.method == "POST":
+    form = RegisterForm()
+
+    # POST req and VALID form
+    if form.validate_on_submit():
         username = request.form["username"]
         password = request.form["password"]
-        conf_password = request.form["conf_password"]
-
+        c_password = request.form["confirm_password"]
        
     return render_template(
         "register.html",
-        content="Content"
+        title="Register",
+        form=form
     )
