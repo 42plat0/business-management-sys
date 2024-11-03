@@ -1,0 +1,23 @@
+{%extends "layout.html"%}
+
+{% block title %} <h1>Register</h1> {%endblock%}
+
+{%block content %}
+    <form method="POST" action={{ url_for('register') }}>
+        <fieldset>
+            <legend>Register</legend>
+
+            <label for="username">Username</label>
+            <input type="text" name="username">
+
+            <label for="password">Password</label>
+            <input type="password" name="password">
+
+            <label for="conf_password">Confirm Password</label>
+            <input type="password" name="conf_password">
+
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+
+{%endblock%}
