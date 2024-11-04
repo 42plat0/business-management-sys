@@ -1,6 +1,9 @@
 from flask import render_template, request
-from managementsystem import app
+
+from managementsystem import app, db
+
 from managementsystem.forms import RegisterForm, LoginForm
+from managementsystem.models import User
 
 @app.route("/")
 @app.route("/index")
@@ -32,9 +35,17 @@ def register():
 
     # POST req and VALID form
     if form.validate_on_submit():
-        username = request.form["username"]
-        password = request.form["password"]
-        c_password = request.form["confirm_password"]
+        # Get data from form
+        username = form.username.data
+        email = form.email.data
+        password = form.password.data
+        c_password = form.confirm_password.data
+
+        u = User(username=username, email=email, password=password)
+        
+        db.session.add(u)
+        db.session.commit()
+
        
     return render_template(
         "register.html",
