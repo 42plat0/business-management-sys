@@ -1,6 +1,6 @@
 from managementsystem import db
 
-from datetime import datetime
+from sqlalchemy import func
 
 class User(db.Model):
     __tablename__= "Users"
@@ -10,19 +10,25 @@ class User(db.Model):
         primary_key=True,
         nullable=False
         )
+    
+    email = db.Column(
+        db.String(120),
+        unique=True,
+        nullable=False
+    )
+
     username = db.Column(
-        db.String, 
+        db.String(20), 
         unique=True,
         nullable=False
         )
     
     password = db.Column(
         db.String, 
-        unique=True,
         nullable=False
         )
     
     created_at = db.Column(
-        db.DateTime,
-        insert_default= datetime.now()
+        db.DateTime(timezone=True),
+        default = func.localtimestamp() # Current local time
     )
