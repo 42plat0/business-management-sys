@@ -1,21 +1,12 @@
-from flask import render_template, request
+from flask import render_template, Blueprint
 
-from managementsystem import app, db
+from managementsystem.app import db
+from managementsystem.blueprints.auth.forms import RegisterForm, LoginForm
+from managementsystem.blueprints.auth.models import User
 
-from managementsystem.forms import RegisterForm, LoginForm
-from managementsystem.models import User
+auth = Blueprint("auth", __name__, template_folder="templates")
 
-@app.route("/")
-@app.route("/index")
-@app.route("/home")
-def home():
-    return render_template(
-        "home.html"
-    )
-
-
-
-@app.route("/login", methods=("GET", "POST"))
+@auth.route("/login", methods=("GET", "POST"))
 def login():
     form = LoginForm()
 
@@ -29,7 +20,7 @@ def login():
         form=form
     )
 
-@app.route("/register", methods=("GET", "POST"))
+@auth.route("/register", methods=("GET", "POST"))
 def register():
     form = RegisterForm()
 
@@ -39,8 +30,8 @@ def register():
         username = form.username.data
         email = form.email.data
         password = form.password.data
-        c_password = form.confirm_password.data
-
+        # c_password = form.confirm_password.data
+        
         u = User(username=username, email=email, password=password)
         
         db.session.add(u)

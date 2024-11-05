@@ -1,8 +1,10 @@
-from managementsystem import app, db
+from managementsystem.app import create_app
+
+f_app = create_app()
 
 if __name__ == "__main__":
-    # Create database
-    with app.app_context():
-        db.create_all()
-        
-    app.run(debug=True)
+
+    # with app.app_context():
+    #     db.create_all()
+    
+    f_app.run(debug=True)
