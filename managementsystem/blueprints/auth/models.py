@@ -1,8 +1,10 @@
-from managementsystem.app import db
-
 from sqlalchemy import func
+from flask_login import UserMixin
 
-class User(db.Model):
+from managementsystem.app import db, login_manager
+from managementsystem.helpers.hash.hash import get_salt, hash_password, check_password
+
+class User(db.Model, UserMixin):
     __tablename__= "users"
     
     uid = db.Column(
@@ -27,8 +29,22 @@ class User(db.Model):
         db.String, 
         nullable=False
         )
+    
+    salt = db.Column(
+        db.String
+    )
 
     created_at = db.Column(
         db.DateTime(timezone=True),
         default = func.localtimestamp() # Current local time
     )
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
+    
+    def generate_pw(self):
+        pass
+
+    def check_pw(self):
+        pass
