@@ -43,8 +43,11 @@ class User(db.Model, UserMixin):
     def load_user(user_id):
         return User.query.get(int(user_id))
     
-    def generate_pw(self):
-        pass
+    def get_salt(self):
+        return get_salt()
+    
+    def generate_pw(self, password, salt):
+        return hash_password(password, salt)
 
-    def check_pw(self):
-        pass
+    def check_pw(self, password, hashed_pw):
+        return check_password(password, hashed_pw)

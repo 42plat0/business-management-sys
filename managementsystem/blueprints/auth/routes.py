@@ -1,9 +1,11 @@
-from flask import render_template, redirect, url_for, Blueprint
+from flask import render_template, redirect, url_for, flash, Blueprint
 from flask_login import login_user, login_required, logout_user, current_user
 
 from managementsystem.app import db
 from managementsystem.blueprints.auth.forms import RegisterForm, LoginForm
 from managementsystem.blueprints.auth.models import User
+
+from managementsystem.helpers.hash.hash import get_salt, hash_password, check_password
 
 auth = Blueprint("auth", __name__, template_folder="templates")
 
@@ -19,7 +21,7 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if not user:
-            return redirect(url_for("register"))
+            return redirect(url_for("home.index"))
 
         return "Success!"
 
@@ -40,13 +42,21 @@ def register():
         username = form.username.data
         email = form.email.data
         password = form.password.data
-        # c_password = form.confirm_password.data
         
-        u = User(username=username, email=email, password=password)
-        
-        db.session.add(u)
-        db.session.commit()
+        user = User.query.filter_by(username=username).first()
 
+        if not user:
+            salt = get_salt()
+            password_hash = hash_password(password, salt)
+
+            new_user = User(username=username, email=email, password=password_hash, salt=salt)
+        
+            db.session.add(new_user)
+            db.session.commit()
+
+            return redirect(url_for("home.index"))
+
+        flash("Username is taken. Choose another one.")
        
     return render_template(
         "register.html",
