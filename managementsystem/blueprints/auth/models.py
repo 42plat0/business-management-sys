@@ -6,7 +6,7 @@ from managementsystem.app import db, login_manager
 class User(db.Model, UserMixin):
     __tablename__= "users"
     
-    uid = db.Column(
+    id = db.Column(
         db.Integer, 
         primary_key=True,
         nullable=False
@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
         db.String(20), 
         unique=True,
         nullable=False
-        )
+    )
     
     password = db.Column(
         db.String, 
@@ -39,6 +39,6 @@ class User(db.Model, UserMixin):
     )
 
     @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
+    def load_user(id):
+        return User.query.get(int(id))
     

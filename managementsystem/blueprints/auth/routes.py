@@ -30,6 +30,7 @@ def login():
                 flash("Password is incorrect!")
                 return redirect(url_for("auth.login"))
 
+            login_user(user)
             return "Success!"
 
         flash("User with specified username doesn't exist.")
