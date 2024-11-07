@@ -20,10 +20,20 @@ def login():
 
         user = User.query.filter_by(username=username).first()
 
-        if not user:
-            return redirect(url_for("home.index"))
+        if user:
+            # Check if password is valid
+            entered_hashed_password = hash_password(password, user.salt)
 
-        return "Success!"
+            valid_password = check_password(entered_hashed_password, user.password)
+
+            if not valid_password:
+                flash("Password is incorrect!")
+                return redirect(url_for("auth.login"))
+
+            return "Success!"
+
+        flash("User with specified username doesn't exist.")
+        return redirect(url_for("auth.login"))
 
 
     return render_template(
@@ -43,9 +53,10 @@ def register():
         email = form.email.data
         password = form.password.data
         
-        user = User.query.filter_by(username=username).first()
+        username_exists = User.query.filter_by(username=username).first()
+        email_exists = User.query.filter_by(email=email).first()
 
-        if not user:
+        if not username_exists and not email_exists:
             salt = get_salt()
             password_hash = hash_password(password, salt)
 
@@ -55,8 +66,11 @@ def register():
             db.session.commit()
 
             return redirect(url_for("home.index"))
+        elif username_exists:
+            flash("Username is taken. Choose another one.")
+        else:
+            flash("Email is taken. Choose another one.")
 
-        flash("Username is taken. Choose another one.")
        
     return render_template(
         "register.html",

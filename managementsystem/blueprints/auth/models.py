@@ -2,7 +2,6 @@ from sqlalchemy import func
 from flask_login import UserMixin
 
 from managementsystem.app import db, login_manager
-from managementsystem.helpers.hash.hash import get_salt, hash_password, check_password
 
 class User(db.Model, UserMixin):
     __tablename__= "users"
@@ -43,11 +42,3 @@ class User(db.Model, UserMixin):
     def load_user(user_id):
         return User.query.get(int(user_id))
     
-    def get_salt(self):
-        return get_salt()
-    
-    def generate_pw(self, password, salt):
-        return hash_password(password, salt)
-
-    def check_pw(self, password, hashed_pw):
-        return check_password(password, hashed_pw)

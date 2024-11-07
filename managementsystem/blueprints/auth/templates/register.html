@@ -4,10 +4,19 @@
 
 {%block content %}
     <form method="POST" action={{ url_for('auth.register') }}>
+        
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <li>{{message}}</li>
+            {%endfor%}
+        {%endwith%}
+
         <fieldset>
             {{ form. hidden_tag()}}
-            <legend>Register</legend>
             
+
+            <legend>Register</legend>
+
             {{ form.username.label()}}
             {{ form.username()}}
 
