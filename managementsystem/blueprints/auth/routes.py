@@ -68,9 +68,9 @@ def register():
 
             return redirect(url_for("home.index"))
         elif username_exists:
-            flash("Username is taken. Choose another one.")
+            flash("Username is taken.")
         else:
-            flash("Email is taken. Choose another one.")
+            flash("Email is taken.")
 
        
     return render_template(

@@ -1,26 +1,37 @@
 {%extends "layout.html"%}
 
-{% block title %} <h1>Login</h1>{%endblock%}
+{% block title %} Login {%endblock%}
 
 {%block content %}
-    <form method="POST" action={{ url_for('auth.login') }}>
+    <main class="container">
+        <section class="container w-50 position-absolute top-50 start-50 translate-middle">
+            <form method="POST" action={{ url_for('auth.login') }}>
         
-        {% with messages = get_flashed_messages() %}
-            {% for message in messages %}
-                <li>{{message}}</li>
-            {% endfor %}
-        {% endwith %}
+                {% with messages = get_flashed_messages() %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger">{{message}}</div>
+                    {% endfor %}
+                {% endwith %}
+        
+                <fieldset>
+                    {{ form. hidden_tag()}}
+                    
+                    <legend class="text-center text-uppercase mb-3">Login</legend>
 
-        <fieldset>
-            {{ form. hidden_tag()}}
-            
-            <legend>LOGIN</legend>
-            
-            {{ form.username()}}
-            {{ form.password()}}
+                    <section class="mb-3 form-floating">
+                        {{ form.username(class="form-control")}}
+                        {{ form.username.label()}}
+                    </section>
 
-            {{ form.submit()}}
-        </fieldset>
-    </form>
-
+                    <section class="mb-3 form-floating">
+                        {{ form.password(class="form-control")}}
+                        {{ form.password.label()}}
+                    </section>
+                    <section class="mb-3">
+                        {{ form.submit(class="btn btn-primary form-control")}}
+                    </section>
+                </fieldset>
+            </form>
+        </section>
+    </main>
 {%endblock%}
