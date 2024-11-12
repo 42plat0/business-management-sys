@@ -3,32 +3,34 @@
 {% block title %} Login {%endblock%}
 
 {%block content %}
-    <section class="container w-50">
-        <form method="POST" action={{ url_for('auth.login') }}>
-    
-            <fieldset>
-                {{ form. hidden_tag()}}
-                
-                <legend class="mb-3 text-center text-uppercase text-white-50">Login</legend>
-                
-                <section class="mb-3 form-floating">
-                    {{ form.username(class="form-control")}}
-                    {{ form.username.label()}}
-                </section>
-                
-                <section class="mb-3 form-floating">
-                    {{ form.password(class="form-control")}}
-                    {{ form.password.label()}}
-                </section>
-                {% with messages = get_flashed_messages() %}
-                    {% for message in messages %}
-                        <div class="alert alert-danger">{{message}}</div>
-                    {% endfor %}
-                {% endwith %}
-                <section class="mb-3">
-                    {{ form.submit(class="btn btn-primary form-control")}}
-                </section>
-            </fieldset>
-        </form>
-    </section>
+    <main class="d-flex align-items-center vw-100 vh-100 bg-dark bg-gradient">
+        <section class="container w-50">
+            <form method="POST" action={{ url_for('auth.login') }}>
+        
+                <fieldset>
+                    {{ form. hidden_tag()}}
+                    
+                    <legend class="mb-3 text-center text-uppercase text-white-50">Login</legend>
+                    
+                    <section class="mb-3 form-floating">
+                        {{ form.username(class="form-control")}}
+                        {{ form.username.label()}}
+                    </section>
+                    
+                    <section class="mb-3 form-floating">
+                        {{ form.password(class="form-control")}}
+                        {{ form.password.label()}}
+                    </section>
+                    {% with messages = get_flashed_messages() %}
+                        {% for message in messages %}
+                            <div class="alert alert-danger">{{message}}</div>
+                        {% endfor %}
+                    {% endwith %}
+                    <section class="mb-3">
+                        {{ form.submit(class="btn btn-primary form-control")}}
+                    </section>
+                </fieldset>
+            </form>
+        </section>
+    </main>
 {%endblock%}
