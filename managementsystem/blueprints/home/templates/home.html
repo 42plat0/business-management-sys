@@ -2,64 +2,69 @@
 {% block title %} Home {% endblock %} 
 
 {% block content %}
+<main class="bg-primary row flex-nowrap">
     <!-- Sidebar -->
-    <main class="bg-primary row flex-nowrap">
-        <aside class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start justify-content-between px-3 pt-2 text-white min-vh-100">
-                <div class="d-flex">
+    <aside class="col-auto col-md-4 col-xl-3 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start justify-content-between pt-2 text-white min-vh-100 pe-4 ps-md-3 ps-sm-3">
+                <div class="d-flex px-sm-2">
                     <a class="nav-link mb-3 text-uppercase fs-4" href="#">
                         <span class="d-none d-sm-inline"> LOGO </span>
                     </a>
                 </div>
                 <div class="d-flex">
-                    <ul class="nav nav-pills flex-column mb-sm-auto px-sm-1 mb-0 align-items-center align-items-sm-start">
+                    <ul class="nav nav-pills flex-column mb-sm-auto px-0 px-sm-2 mb-0 align-items-center align-items-sm-start">
                         <li class="nav-item">
-                            <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row pe-3"> 
-                                <img src="/static/img/schedule-calendar.svg"> 
+                            <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0"> 
+                                <img src="/static/img/schedule-calendar.svg" class="px-0"> 
                                 <span class="ms-1 d-none d-sm-inline">Grafikas</span>
                             </a>
                         </li>
                         <li class="nav-item d-flex">
-                            <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row">
+                            <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0">
                                 <img src="/static/img/task-square.svg" > 
                                 <span class="ms-1 d-none d-sm-inline">Užduotys</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row">
-                                <img src="/static/img/recipe-keeper.svg"> 
+                            <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0">
+                                <img src="/static/img/chemistry-science.svg"> 
                                 <span class="ms-1 d-none d-sm-inline">Receptai</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row">
+                            <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0">
                                 <img src="/static/img/exchange-5.svg" > 
                                 <span class="ms-1 d-none d-sm-inline">Pakeitimas</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row">
-                                <img src="/static/img/document(1).svg"> 
+                            <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0">
+                                <img src="/static/img/document.svg"> 
                                 <span class="ms-1 d-none d-sm-inline">Dokumentai</span>
                             </a>
                         </li>
                     </ul>
                 </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row">
+                <div class="nav-item px-sm-2">
+                    <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0">
                         <img src="/static/img/logout.svg"> 
                         <span class="ms-1 d-none d-sm-inline text-nowrap">Log off</span>
                     </a>
                 </div>
             </div>
         </aside>
+
         <!-- Topbar -->
         <nav class="navbar navbar-expand bg-dark h-50 p-2 col">
             <div class="container-fluid">
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="collapse navbar-collapse justify-content-end gx-5" id="navbarNavAltMarkup">
                     <div class="navbar-nav fs-3">
-                        <a class="nav-link active me-3" aria-current="page" href="#">Chat</a>
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" aria-current="page" href="#">
+                            <img src="/static/img/chat-round-dots.svg" class="nav-link filter-black"> 
+                        </a>
+                        <a class="nav-link d-flex flex-row" href="#">
+                            Profile
+                        </a>
                     </div>
                 </div>
             </div>
