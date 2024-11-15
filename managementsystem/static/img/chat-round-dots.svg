@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="px" height="32px" viewBox="0 0 32 32" version="1.1">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="36px" viewBox="0 0 36 36" version="1.1">
 <g id="surface1">
-<path style="fill:none;
-stroke-width:1.5;
-stroke-linecap:round;
-stroke-linejoin:miter;
-stroke:#000000;
-stroke-opacity:1;
-stroke-miterlimit:4;" d="M 17.000977 3.336914 C 15.530273 2.487305 13.822266 2.000977 12 2.000977 C 6.477539 2.000977 2.000977 6.477539 2.000977 12 C 2.000977 13.599609 2.375977 15.111328 3.043945 16.453125 C 3.219727 16.807617 3.28125 17.214844 3.175781 17.601562 L 2.581055 19.828125 C 2.323242 20.791992 3.208008 21.676758 4.174805 21.418945 L 6.398437 20.824219 C 6.785156 20.71875 7.192383 20.780273 7.546875 20.956055 C 8.888672 21.624023 10.400391 21.999023 12 21.999023 C 17.522461 21.999023 21.999023 17.522461 21.999023 12 C 21.999023 10.177734 21.512695 8.469727 20.663086 6.999023 " transform="matrix(1.333333,0,0,1.333333,0,0)"/>
-<path style="fill:none;
-stroke-width:2;
-stroke-linecap:round;
-stroke-linejoin:round;
-stroke:#000000;stroke-opacity:1;stroke-miterlimit:4;" d="M 8.000977 12 L 8.009766 12 M 11.991211 12 L 12 12 M 15.990234 12 L 15.999023 12 " transform="matrix(1.333333,0,0,1.333333,0,0)"/>
+<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:miter;stroke:#000000;stroke-opacity:1;stroke-miterlimit:4;" d="M 17 3.338542 C 15.528646 2.486979 13.820312 2 12 2 C 6.476562 2 2 6.476562 2 12 C 2 13.598958 2.375 15.111979 3.044271 16.453125 C 3.221354 16.809896 3.28125 17.216146 3.177083 17.601562 L 2.580729 19.825521 C 2.322917 20.794271 3.205729 21.677083 4.174479 21.419271 L 6.398438 20.822917 C 6.783854 20.71875 7.190104 20.778646 7.546875 20.955729 C 8.888021 21.625 10.401042 22 12 22 C 17.523438 22 22 17.523438 22 12 C 22 10.179688 21.513021 8.471354 20.661458 7 " transform="matrix(1.5,0,0,1.5,0,0)"/>
+<path style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;stroke-miterlimit:4;" d="M 8 12 L 8.007812 12 M 11.992188 12 L 12 12 M 15.992188 12 L 16 12 " transform="matrix(1.5,0,0,1.5,0,0)"/>
 </g>
 </svg>
