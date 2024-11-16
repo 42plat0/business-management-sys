@@ -17,9 +17,11 @@ def create_app():
     # Add blueprints
     from managementsystem.blueprints.home.routes import home as home_bp
     from managementsystem.blueprints.auth.routes import auth as auth_bp
+    from managementsystem.blueprints.schedule.routes import schedule as schedule_bp
 
     app.register_blueprint(home_bp, url_prefix="/")
     app.register_blueprint(auth_bp, url_prefix="/auth")
+    app.register_blueprint(schedule_bp, url_prefix="/schedule")
 
     migrate = Migrate(app, db)
     

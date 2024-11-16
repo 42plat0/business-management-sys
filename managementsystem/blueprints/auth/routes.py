@@ -35,7 +35,7 @@ def login():
                 return redirect(url_for("auth.login"))
 
             login_user(user)
-            return "Success!"
+            return render_template("home.home")
 
         flash("User with specified username doesn't exist.")
         return redirect(url_for("auth.login"))
