@@ -82,3 +82,10 @@ def register():
         title="Register",
         form=form
     )
+
+import json
+
+@auth.route("/api/hey", methods=("GET",))
+def hey():
+    return json.dumps({"id": 2, "days": [1, 2, 3, 4, 5, 6, 7]}) 
+    pass
