@@ -22,8 +22,8 @@ class UserView(ModelView):
 class CafeAdminIndexView(AdminIndexView):
     @expose("/")
     def index(self):
+        # Prevents from logging in not authenticated users
         if not flask_login.current_user.is_authenticated:
             return redirect(url_for('auth.login'))
 
-        print(flask_login.current_user) 
-        return super().index()
+        return super().index() # Returns admin page
