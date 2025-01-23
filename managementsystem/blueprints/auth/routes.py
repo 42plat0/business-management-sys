@@ -10,6 +10,7 @@ from managementsystem.helpers.hash.hash import get_salt, hash_password, check_pa
 auth = Blueprint("auth", __name__, template_folder="./templates")
 
 @auth.route("/")
+@auth.route("/index")
 def index():
     return render_template("index.html")
 
