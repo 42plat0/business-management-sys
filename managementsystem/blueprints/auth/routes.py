@@ -35,7 +35,7 @@ def login():
                 return redirect(url_for("auth.login"))
 
             login_user(user)
-            return render_template("home.home")
+            return redirect(url_for("home.index"))
 
         flash("User with specified username doesn't exist.")
         return redirect(url_for("auth.login"))
@@ -82,6 +82,11 @@ def register():
         title="Register",
         form=form
     )
+
+@auth.route("/logoff", methods=("GET", "POST"))
+def logoff():
+    logout_user()
+    return redirect(url_for("auth.index"))
 
 import json
 

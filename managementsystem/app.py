@@ -2,6 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -24,7 +26,9 @@ def create_app():
     app.register_blueprint(schedule_bp, url_prefix="/schedule")
 
     migrate = Migrate(app, db)
-    
+
+    admin = Admin(app, name="cafe")
+
     with app.app_context():
         db.create_all()
         
