@@ -70,7 +70,9 @@ def register():
             db.session.add(new_user)
             db.session.commit()
 
+            login_user(new_user)
             return redirect(url_for("home.index"))
+
         elif username_exists:
             flash("Username is taken.")
         else:
