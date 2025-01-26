@@ -2,12 +2,26 @@
 
 {% block title %} Home {% endblock %}
 
+{% block style %}
+<link rel="stylesheet" href="{{url_for('auth.static', filename='css/style.css')}}">
+{% endblock %}
+
 {% block content %}
-    <main class="d-flex align-items-center vw-100 vh-100 bg-dark bg-gradient"></main>
-        <section class="container w-75 position-absolute top-50 start-50 translate-middle">
-            <section class="row">
-                <a href="{{ url_for('auth.login') }}" class="col btn btn-primary m-3">Login</a>
-                <a href="{{ url_for('auth.register') }}" class="col btn btn-primary m-3">Register</a>
+    <main class="d-flex align-items-center justify-content-center vh-100 bg-dark bg-gradient">
+        <section class="container text-center">
+            <h1 class="text-white mb-4 display-4 fw-bold">Welcome to Apyvarta</h1>
+            <p class="text-white-50 mb-5 lead">Manage your cafe with ease.</p>
+            <section class="row justify-content-center">
+                <div class="col-md-4 mb-3">
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-primary btn-lg w-100 py-3 fs-5">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-outline-light btn-lg w-100 py-3 fs-5">
+                        <i class="fas fa-user-plus me-2"></i>Register
+                    </a>
+                </div>
             </section>
         </section>
     </main>
