@@ -1,84 +1,85 @@
 {% extends "base.html" %} 
 {% block title %} Home {% endblock %} 
 
+{% block style %}
+<link rel="stylesheet" href="{{url_for('home.static', filename='css/style.css')}}">
+{% endblock %}
 {% block content %}
-    <main class="bg-primary flex-nowrap">
-            <!-- Topbar -->
-            <nav class="navbar navbar-expand bg-dark h-50 row px-4">
-                <div class="navbar-nav justify-content-between align-items-end">
-                    <div class="navbar-brand">
-                        <a class="nav-link text-uppercase fs-4 navbar-brand" href="{{ url_for('home.index')}}">logo</a>
-                    </div>
-                    <div class="d-flex">
-                        <div class="nav-item">
-                            <a class="nav-link" href="#">
-                                <img src="/static/img/chat-round-dots.svg">
-                            </a>
-                        </div>
-                        <div class="nav-item">
-                            <a class="nav-link" href="#">
-                                <img src="/static/img/profile-circle.svg">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-        <section class="row"> 
-            <!-- Sidebar -->
-            <div class="col-auto px-3 col-md-3 col-xl-2 px-sm-2 bg-dark">
-                <div class="d-flex flex-column align-items-center align-items-sm-start justify-content-evenly pt-2 text-white vh-100 pe-4 ps-md-3 ps-sm-3">
-                    <div class="d-flex">
-                        <ul class="nav nav-pills flex-column mb-sm-auto px-0 px-sm-2 mb-0 align-items-center align-items-sm-start">
-                            <li class="nav-item">
-                                <a href="{{ url_for('schedule.index')}}" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0"> 
-                                    <img src="/static/img/schedule-calendar.svg" class="px-0"> 
-                                    <span class="ms-1 d-none d-sm-inline">Grafikas</span>
-                                </a>
-                            </li>
-                            <li class="nav-item d-flex">
-                                <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0">
-                                    <img src="/static/img/task-square.svg" > 
-                                    <span class="ms-1 d-none d-sm-inline">Užduotys</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0">
-                                    <img src="/static/img/chemistry-science.svg"> 
-                                    <span class="ms-1 d-none d-sm-inline">Receptai</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0">
-                                    <img src="/static/img/exchange-5.svg" > 
-                                    <span class="ms-1 d-none d-sm-inline">Pakeitimas</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0">
-                                    <img src="/static/img/document.svg"> 
-                                    <span class="ms-1 d-none d-sm-inline">Dokumentai</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="nav-item px-sm-2">
-                        <a href="{{ url_for('auth.logoff') }}" class="nav-link mb-3 text-uppercase fs-4 d-flex flex-row align-middle px-0">
-                            <img src="/static/img/logout.svg"> 
-                            <span class="ms-1 d-none d-sm-inline text-nowrap">Log off</span>
-                        </a>
-                    </div>
+    <main class="d-flex flex-column vh-100">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-dark bg-dark shadow-sm">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="navbar-brand text-uppercase fs-4 fw-bold" href="{{ url_for('home.index')}}">
+                    <img src="/static/img/logo.svg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
+                </a>
+                <!-- Icons -->
+                <div class="d-flex align-items-center">
+                    <a class="nav-link me-3" href="#">
+                        <img src="/static/img/chat-round-dots.svg" alt="Chat" width="24" height="24">
+                    </a>
+                    <a class="nav-link" href="#">
+                        <img src="/static/img/profile-circle.svg" alt="Profile" width="24" height="24">
+                    </a>
                 </div>
             </div>
-            <!-- Content -->
-            <div class="col">
-                <div class="container">
+        </nav>
+
+        <!-- Main Content -->
+        <section class="d-flex flex-grow-1">
+            <!-- Sidebar -->
+            <div class="bg-dark text-white d-flex flex-column p-3 sidebar">
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item mb-2">
+                        <a href="{{ url_for('schedule.index')}}" class="nav-link text-white d-flex align-items-center">
+                            <img src="/static/img/schedule-calendar.svg" alt="Schedule" class="me-2" width="24" height="24">
+                            <span class="fs-5 d-none d-md-inline">Grafikas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link text-white d-flex align-items-center">
+                            <img src="/static/img/task-square.svg" alt="Tasks" class="me-2" width="24" height="24">
+                            <span class="fs-5 d-none d-md-inline">Užduotys</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link text-white d-flex align-items-center">
+                            <img src="/static/img/chemistry-science.svg" alt="Recipes" class="me-2" width="24" height="24">
+                            <span class="fs-5 d-none d-md-inline">Receptai</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link text-white d-flex align-items-center">
+                            <img src="/static/img/exchange-5.svg" alt="Exchange" class="me-2" width="24" height="24">
+                            <span class="fs-5 d-none d-md-inline">Pakeitimas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link text-white d-flex align-items-center">
+                            <img src="/static/img/document.svg" alt="Documents" class="me-2" width="24" height="24">
+                            <span class="fs-5 d-none d-md-inline">Dokumentai</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Logout -->
+                <div class="mt-auto">
+                    <a href="{{ url_for('auth.logoff') }}" class="nav-link text-white d-flex align-items-center">
+                        <img src="/static/img/logout.svg" alt="Logout" class="me-2" width="24" height="24">
+                        <span class="fs-5 d-none d-md-inline">Log off</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="flex-grow-1 p-4 bg-light">
+                <div class="container-fluid">
                     <div class="row justify-content-center">
                         {% block functionality %}
                         {% endblock %}
                     </div>
                 </div>
+            </div>
         </section>
-        
-    </main> 
+    </main>
+
 {% endblock %}
