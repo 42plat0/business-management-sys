@@ -10,15 +10,19 @@ import bcrypt
 
     User provides password -> Retrieve salt -> Salt password -> Compare to stored hash -Matches-> Correct password, -Doesnt-> Wrong password
 """
+
+
 def get_salt():
     return bcrypt.gensalt()
+
 
 def hash_password(password, salt):
 
     # Convert password to array of bytes
     password = password.encode("utf-8")
-    
+
     return bcrypt.hashpw(password, salt)
+
 
 def check_password(entered_password_hash, stored_hash):
     return entered_password_hash == stored_hash

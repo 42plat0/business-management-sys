@@ -11,15 +11,17 @@ class CafeAdminIndexView(AdminIndexView):
     def index(self):
         # Prevents from logging in not authenticated users
         if not flask_login.current_user.is_authenticated:
-            return redirect(url_for('auth.login'))
+            return redirect(url_for("auth.login"))
 
-        return super().index() # Returns admin page
+        return super().index()  # Returns admin page
+
 
 class LogoutView(BaseView):
     @expose("/")
     def index(self):
         flask_login.logout_user()
-        return redirect(url_for('auth.index'))
+        return redirect(url_for("auth.index"))
+
 
 class UserView(ModelView):
     # Without seperate endpoint page
@@ -27,12 +29,10 @@ class UserView(ModelView):
     edit_modal = True
 
     # View
-    column_exclude_list = ['password', 'salt'] 
+    column_exclude_list = ["password", "salt"]
 
     # Edit/Create
-    form_excluded_columns = ['salt', 'created_at']
-
-
+    form_excluded_columns = ["salt", "created_at"]
 
 
 def create_admin(app, db):

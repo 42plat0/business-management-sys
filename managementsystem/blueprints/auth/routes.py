@@ -9,9 +9,11 @@ from managementsystem.helpers.hash.hash import get_salt, hash_password, check_pa
 
 auth = Blueprint("auth", __name__, template_folder="./templates")
 
+
 @auth.route("/")
 def index():
     return render_template("index.html")
+
 
 @auth.route("/login", methods=("GET", "POST"))
 def login():
@@ -40,12 +42,8 @@ def login():
         flash("User with specified username doesn't exist.")
         return redirect(url_for("auth.login"))
 
+    return render_template("login.html", title="Login", form=form)
 
-    return render_template(
-        "login.html",
-        title="Login",
-        form=form
-    )
 
 @auth.route("/register", methods=("GET", "POST"))
 def register():
@@ -57,13 +55,13 @@ def register():
         username = form.username.data
         email = form.email.data
         password = form.password.data
-        
+
         username_exists = User.query.filter_by(username=username).first()
         email_exists = User.query.filter_by(email=email).first()
 
         if not username_exists and not email_exists:
             new_user = User(username=username, email=email, password=password)
-        
+
             db.session.add(new_user)
             db.session.commit()
 
@@ -75,21 +73,19 @@ def register():
         else:
             flash("Email is taken.")
 
-       
-    return render_template(
-        "register.html",
-        title="Register",
-        form=form
-    )
+    return render_template("register.html", title="Register", form=form)
+
 
 @auth.route("/logoff", methods=("GET", "POST"))
 def logoff():
     logout_user()
     return redirect(url_for("auth.index"))
 
+
 import json
+
 
 @auth.route("/api/hey", methods=("GET",))
 def hey():
-    return json.dumps({"id": 2, "days": [1, 2, 3, 4, 5, 6, 7]}) 
+    return json.dumps({"id": 2, "days": [1, 2, 3, 4, 5, 6, 7]})
     pass
