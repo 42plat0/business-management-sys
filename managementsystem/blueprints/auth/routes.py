@@ -7,7 +7,7 @@ from managementsystem.blueprints.auth.models import User
 
 from managementsystem.helpers.hash.hash import get_salt, hash_password, check_password
 
-auth = Blueprint("auth", __name__, template_folder="./templates")
+auth = Blueprint("auth", __name__, template_folder="./templates", static_folder="static")
 
 
 @auth.route("/")

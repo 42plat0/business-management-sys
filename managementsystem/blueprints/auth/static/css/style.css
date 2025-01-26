@@ -1,0 +1,41 @@
+/* Custom background gradient */
+.bg-gradient {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+/* Form container */
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+/* Button hover effects */
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Link hover effects */
+.text-decoration-none:hover {
+    text-decoration: underline !important;
+}
+
+/* Button hover effects */
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1.display-4 {
+        font-size: 2.5rem;
+    }
+    p.lead {
+        font-size: 1rem;
+    }
+}
+
