@@ -1,48 +1,67 @@
-{%extends "base.html"%}
+{% extends "base.html" %}
 
-{% block title %} Register {%endblock%}
+{% block title %} Register {% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{url_for('auth.static', filename='css/style.css')}}">
+{% endblock %}
 
 {% block content %}
-    <main class="d-flex align-items-center vw-100 vh-100 bg-dark bg-gradient">
-        <section class="container w-50 position-absolute top-50 start-50 translate-middle">
-            <form method="POST" action={{ url_for('auth.register') }}>
-        
+    <main class="d-flex align-items-center justify-content-center vh-100 bg-dark bg-gradient">
+        <section class="container w-100 w-md-50 w-lg-25 p-4 bg-light rounded shadow">
+            <form method="POST" action="{{ url_for('auth.register') }}">
                 <fieldset>
-                    {{ form. hidden_tag()}}
-        
-                    <legend class="mb-3 text-center text-uppercase text-white-50">Register</legend>
-        
-                    <section class="mb-3 form-floating">
-                        {{ form.username(class="form-control")}}
-                        {{ form.username.label()}}
-                    </section>
-        
-                    <section class="mb-3 form-floating">
-                        {{ form.email(class="form-control")}}
-                        {{ form.email.label(class="form-label")}}
-                    </section>
-        
-                    <section class="mb-3 form-floating">
-                        {{ form.password(class="form-control")}}
-                        {{ form.password.label(class="form-label")}}
-                    </section>
-        
-                    <section class="mb-3 form-floating">
-                        {{ form.confirm_password(class="form-control")}}
-                        {{ form.confirm_password.label(class="form-label")}}
-                    </section>
+                    {{ form.hidden_tag() }}
 
+                    <!-- Title -->
+                    <legend class="mb-4 text-center text-uppercase fw-bold text-dark">Register</legend>
+
+                    <!-- Username Field -->
+                    <div class="mb-3 form-floating">
+                        {{ form.username(class="form-control", placeholder="Username") }}
+                        {{ form.username.label(class="form-label") }}
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="mb-3 form-floating">
+                        {{ form.email(class="form-control", placeholder="Email") }}
+                        {{ form.email.label(class="form-label") }}
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="mb-3 form-floating">
+                        {{ form.password(class="form-control", placeholder="Password") }}
+                        {{ form.password.label(class="form-label") }}
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div class="mb-3 form-floating">
+                        {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
+                        {{ form.confirm_password.label(class="form-label") }}
+                    </div>
+
+                    <!-- Flash Messages -->
                     {% with messages = get_flashed_messages() %}
-                        {% for message in messages %}
-                            <div class="alert alert-danger">{{message}}</div>
-                        {%endfor%}
-                    {%endwith%}
-        
-                    <section class="mb-3">
-                        {{ form.submit(class="btn btn-primary form-control")}}
-                    </section>
+                        {% if messages %}
+                            <div class="mb-3">
+                                {% for message in messages %}
+                                    <div class="alert alert-danger">{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+
+                    <!-- Submit Button -->
+                    <div class="mb-3">
+                        {{ form.submit(class="btn btn-primary w-100 py-2") }}
+                    </div>
+
+                    <!-- Additional Links -->
+                    <div class="text-center">
+                        <a href="{{ url_for('auth.login') }}" class="text-decoration-none">Already have an account? Login</a>
+                    </div>
                 </fieldset>
             </form>
         </section>
     </main>
-{%endblock%}
+{% endblock %}
