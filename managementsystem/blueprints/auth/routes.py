@@ -62,10 +62,7 @@ def register():
         email_exists = User.query.filter_by(email=email).first()
 
         if not username_exists and not email_exists:
-            salt = get_salt()
-            password_hash = hash_password(password, salt)
-
-            new_user = User(username=username, email=email, password=password_hash, salt=salt)
+            new_user = User(username=username, email=email, password=password)
         
             db.session.add(new_user)
             db.session.commit()

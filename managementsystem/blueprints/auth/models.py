@@ -1,7 +1,11 @@
 from sqlalchemy import func
+from sqlalchemy import event
+
+from sqlalchemy import event
 from flask_login import UserMixin
 
 from managementsystem.app import db, login_manager
+from managementsystem.helpers.hash.hash import get_salt, hash_password
 
 class User(db.Model, UserMixin):
     __tablename__= "users"
@@ -30,7 +34,8 @@ class User(db.Model, UserMixin):
         )
     
     salt = db.Column(
-        db.String
+        db.String,
+        default=get_salt()
     )
 
     created_at = db.Column(
@@ -41,4 +46,11 @@ class User(db.Model, UserMixin):
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))
-    
+
+@event.listens_for(User.password, 'set', retval=True)
+def hash_user_password(target, value, oldvalue, initiator):
+    if value != oldvalue:
+        target.salt = get_salt()
+        return hash_password(value, target.salt)
+
+    return value
